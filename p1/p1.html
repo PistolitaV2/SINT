@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF8">
+  <title>p1.html</title>
+  <link rel="stylesheet" href="p1.css">
+  <script src="p1.js"> </script>
+</head>
+
+<body onload="filler_nav()">
+  <h1 id="titulo">Recomendacions de pel&iacute;culas</h1>
+
+  <form action="p1.php" class="forms" name="miform" method="get" enctype="application/x-www-form-urlencoded">
+    Nome: <INPUT TYPE="text" NAME="cname" placeholder="Nome" pattern="^[A-Za-zñÑáéíóúÁÉÍÓÚ]{3,} [A-Za-zñÑáéíóúÁÉÍÓÚ]{3,}$"> <br>  
+    Login : <INPUT TYPE="text" NAME="clogin" pattern="^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ]{4,8}$" onchange="checklogin()"> <br>
+    Contrasinal: <INPUT type="password" NAME = "cpasswd" onchange="checkpasswd()"> <br>
+    Teléfono: <INPUT type="text" NAME = "ctlph" onchange="checktlph()"> <br>
+    E-mail: <INPUT type="email" NAME="cemail"><br>
+    <br>
+    Idade: <br>
+    <INPUT type="radio" name="cage" value="Menor de 25">Menor de 25 <br>
+    <INPUT type="radio" name="cage" value="Entre 25 e 40">Entre 25 e 40 <br>
+    <INPUT type="radio" name="cage" value="Entre 40 e 60">Entre 40 e 60 <br>
+    <INPUT type="radio" name="cage" value="Máis de 60">Máis de 60 <br>
+    <br>
+    <h2 class="subgrupo">¿En qu&eacute; x&eacute;neros est&aacute; interesado?</h2>
+    <table>
+      <tr>
+    <INPUT TYPE="checkbox" NAME="cgenre" VALUE="Western">Western<br>
+    <INPUT TYPE="checkbox" NAME="cgenre" VALUE="Comedia">Comedia<br>
+    <INPUT TYPE="checkbox" NAME="cgenre" VALUE="Acción">Acci&oacute;n<br>
+    <INPUT TYPE="checkbox" NAME="cgenre" VALUE="Romántica">Rom&aacute;ntica<br>
+    <INPUT TYPE="checkbox" NAME="cgenre" VALUE="Ficción"> Ficci&oacute;n<br>
+    </tr>
+    </table>
+    <INPUT TYPE="checkbox" NAME="cgenre" id="select" VALUE="Selecionar todo" onclick="checkAll(this)" > Selecionar/Desmarcar todo <br>
+
+   <h3 class="subgrupo" id="feedback"> Deixa teu feedback: <br>  <textarea name= "ccomment"rows="20"cols="40" > </textarea></h3><br>
+
+    <h2 class="subgrupo"> Selecciona seu provedor: </h2> 
+    <select name = "cInternet">
+      <option value="Movistar">Movistar</option>
+      <option value="R">R</option>
+      <option value="Orange">Orange</option>
+      <option value="Vodafone">Vodafone</option>
+    </select>
+<br>
+<br>
+    M&eacute;todo de env&iacute;o:
+    <INPUT TYPE="radio" NAME="method" VALUE="GET" onclick=get()>Get
+    <INPUT TYPE="radio" NAME="method" VALUE="POST" checked onclick=post()>Post<br>
+    Codificaci&oacute;n:
+    <INPUT TYPE="radio" NAME="enctype" VALUE="application/x-www-form-urlencoded" onclick= "return urlencoded()">application/x-www-form-urlencoded
+    <INPUT TYPE="radio" NAME="enctype" VALUE="multipart/form-data" checked onclick="return multipart()">multipart/form-data<br>
+    <input value="enviar" type="submit"><br>
+    <input class="boton" value="refacer" type="reset">
+
+      <br>
+
+  <input hidden name="cbrowser" value= "">
+  <footer class="subgrupo">&copy;Pedro Otero</footer>
+
+  </form>
+
+</body>
+
+
+
+</html>
