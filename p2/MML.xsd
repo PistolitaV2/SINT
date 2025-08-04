@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+
+<xsd:element  name="Movies">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="Year" type="syear" minOccurs = "1"/>
+<xsd:element name="Movie" type="smovie" maxOccurs ="unbounded"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+
+<xsd:simpleType name="syear">
+<xsd:restriction base ="xsd:integer">
+<xsd:minInclusive value="1900"/>
+<xsd:maxInclusive value="2021"/>
+</xsd:restriction>
+</xsd:simpleType>
+
+<xsd:complexType name="smovie">
+<xsd:sequence>
+<xsd:element name="Title"/>
+<xsd:element name="Duration" type="sduration" minOccurs="0"/>
+<xsd:element name="Genre" type="sgenre" maxOccurs ="unbounded"/>
+<xsd:element name="Cast" type= "scast" maxOccurs ="unbounded"/>
+</xsd:sequence>
+<xsd:attribute name ="langs" type="xsd:string" use="optional"/>
+</xsd:complexType>
+
+<xsd:simpleType name="sduration">
+<xsd:restriction base = "xsd:integer">
+      <xsd:minInclusive value="60"/>
+      <xsd:maxInclusive value="300"/>
+</xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="sgenre">
+<xsd:restriction base = "xsd:string">
+<xsd:enumeration value = "Comedy"/>
+<xsd:enumeration value = "Drama"/>
+<xsd:enumeration value = "Action"/>
+</xsd:restriction>
+</xsd:simpleType>
+
+<xsd:complexType name = "scast">
+<xsd:sequence>
+<xsd:element name = "Name" type="xsd:string"/>    
+<xsd:element name = "Role" type = "srole"/>                                              
+<xsd:choice>
+<xsd:element name = "Email" type = "semail" minOccurs="0" maxOccurs ="unbounded"/>
+<xsd:element name = "Phone" type = "sphone" minOccurs="0" maxOccurs ="unbounded"/>                                      
+</xsd:choice>
+ <xsd:element name="MML" type="xsd:anyURI" minOccurs="0" maxOccurs="unbounded"/>
+</xsd:sequence>
+<xsd:attribute name = "id" type="xsd:string" use="required"/>
+</xsd:complexType>
+
+<xsd:simpleType name="srole">                  
+<xsd:restriction base = "xsd:string">
+<xsd:enumeration value = "Main"/>
+<xsd:enumeration value = "Supporting"/>
+<xsd:enumeration value = "Extra"/>
+</xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="sphone">     
+<xsd:restriction base = "xsd:integer">
+<xsd:pattern value="[0-9]{9}"/>     <!--"^[5-9]\d{8}$"    hai telefonos con 222222222-->
+</xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="semail">     
+<xsd:restriction base = "xsd:string">
+<xsd:pattern value="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"/>
+</xsd:restriction>
+</xsd:simpleType>
+
+</xsd:schema>
